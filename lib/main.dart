@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,57 +9,129 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: ''),
+      home: HomePage(title: ''),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   int _counter = 0;
+  String situacao = 'Há vaga, entre';
 
-  void _incrementCounter() {
+  void _incrementCounter(int operacao) {
     setState(() {
-      _counter++;
+      if (_counter < 10) {
+        situacao = 'Há vaga, entre';
+      }
+      switch (operacao) {
+        case 1:
+          if (_counter >= 10) {
+            situacao = 'Aguarde, não há vagas';
+            _counter--;
+          }
+          _counter++;
+          break;
+
+        case 2:
+          if (_counter <= 0) {
+            situacao = 'Operação inválida';
+            _counter++;
+          }
+          _counter--;
+
+          break;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+          children: [
+            Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.black38,
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'Pessoas:',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    '$_counter',
+                    style: TextStyle(
+                      fontSize: 60,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    '$situacao',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            SizedBox(
+              height: 60,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () => _incrementCounter(1),
+                  icon: Icon(
+                    Icons.add_circle_outline,
+                    color: Colors.greenAccent,
+                  ),
+                  iconSize: 40,
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                IconButton(
+                  onPressed: () => _incrementCounter(2),
+                  icon: Icon(
+                    Icons.remove_circle_outline,
+                    color: Colors.red,
+                  ),
+                  iconSize: 40,
+                ),
+              ],
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
