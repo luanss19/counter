@@ -92,6 +92,17 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 60,
                       color: Colors.white,
                     ),
+                  ),Center(
+                    child: SizedBox(
+                      height: 24.0,
+                      width: double.maxFinite,
+                      child: Divider(
+                        thickness: 1.4,
+                        color: Colors.white60,
+                        indent: 100,
+                        endIndent: 100,
+                      ),
+                    ),
                   ),
                   Text(
                     '$situacao',
@@ -109,24 +120,35 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                  onPressed: () => _incrementCounter(1),
-                  icon: Icon(
-                    Icons.add_circle_outline,
-                    color: Colors.greenAccent,
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.black38,
+                    borderRadius: BorderRadius.circular(50),
                   ),
-                  iconSize: 40,
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                IconButton(
-                  onPressed: () => _incrementCounter(2),
-                  icon: Icon(
-                    Icons.remove_circle_outline,
-                    color: Colors.red,
+                  child:  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () => _incrementCounter(1),
+                        icon: Icon(
+                          Icons.add_circle_outline,
+                          color: Colors.greenAccent,
+                        ),
+                        iconSize: 40,
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      IconButton(
+                        onPressed: () => _incrementCounter(2),
+                        icon: Icon(
+                          Icons.remove_circle_outline,
+                          color: Colors.red,
+                        ),
+                        iconSize: 40,
+                      ),
+                    ],
                   ),
-                  iconSize: 40,
                 ),
               ],
             ),
