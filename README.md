@@ -25,8 +25,8 @@
 
    <h2 align="center">Preview </h2><br>
 
-   <p align="center">
-   <img src="assets/images/Demo/counterdemo.gif">
+   <p align="center" >
+   <img width="290px" height="450px" src="assets/images/Demo/counterdemo.gif">
    </p>
 
 ---
