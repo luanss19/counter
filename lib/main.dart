@@ -30,30 +30,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _counter = 0;
+  int _limit = 10;
   String situacao = 'Há vaga, entre';
 
-  void _incrementCounter(int operacao) {
+  void _incrementCounter(bool operacao, int limit) {
     setState(() {
-      if (_counter < 10) {
-        situacao = 'Há vaga, entre';
+      operacao == false ? _counter-- : _counter++;
+      if (_counter >= limit){
+        situacao = 'Aguarde, não há vagas.';
+        _counter = limit;
       }
-      switch (operacao) {
-        case 1:
-          if (_counter >= 10) {
-            situacao = 'Aguarde, não há vagas';
-            _counter--;
-          }
-          _counter++;
-          break;
 
-        case 2:
-          if (_counter <= 0) {
-            situacao = 'Operação inválida';
-            _counter++;
-          }
-          _counter--;
+      if(_counter < limit && _counter > 0){
+        situacao = 'Entre, há vagas :)';
+      }
 
-          break;
+      if(_counter <= 0){
+        situacao = 'Operação inválida.';
+        _counter++;
       }
     });
   }
@@ -129,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                   child:  Row(
                     children: [
                       IconButton(
-                        onPressed: () => _incrementCounter(1),
+                        onPressed: () => _incrementCounter(true, _limit),
                         icon: Icon(
                           Icons.add_circle_outline,
                           color: Colors.greenAccent,
@@ -140,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                         width: 30,
                       ),
                       IconButton(
-                        onPressed: () => _incrementCounter(2),
+                        onPressed: () => _incrementCounter(false, _limit),
                         icon: Icon(
                           Icons.remove_circle_outline,
                           color: Colors.red,
