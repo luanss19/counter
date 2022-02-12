@@ -9,7 +9,7 @@
 
 - [Preview of the finished app](#preview-)
 
-- [Tecnologies used in the project](#---tecnologies-used-in-the-project----)
+- [Tecnologies used in the project](#tecnologies-used-in-the-project-)
 
 ---
 
@@ -17,7 +17,7 @@
    
    <p align="center">
       As we are currently in a pandemic and the restaurants, markets and stores in general are setting a limit to the number of customers that can be inside, this Flutter application can be used to count how many people are currently in your store and keep track of the number. <br>
-      The maximum number of people can be easly changed in the code
+      The maximum number of people can be easly changed in the code.
 
    </p>
 
@@ -31,11 +31,10 @@
 
 ---
 
-   <h2 align="center">
-   Tecnologies used in the project
-   </h2>
-
-   During the development of this app, a lot of different tools of the [Flutter](https://flutter.dev/) framework were used, such as the following widgets and principles :.<br>
+   <h2 align="center">Tecnologies used in the project </h2>
+<p>
+   During the development of this app, a lot of different tools of the [Flutter](https://flutter.dev/) framework were used, such as the following widgets and principles :<br>
+   
     - Stateless and Stateful,
     - Text,
     - Column,
@@ -44,6 +43,8 @@
     - Padding,
     - TextStyle,
     - FlatButton
+</p>
+
 
 ---
 
