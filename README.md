@@ -33,7 +33,7 @@
 
    <h2 align="center">Tecnologies used in the project </h2>
 <p>
-   During the development of this app, a lot of different tools of the [Flutter](https://flutter.dev/) framework were used, such as the following widgets and principles :<br>
+   During the development of this app, a lot of different tools of the <a href="https://flutter.dev/">Flutter</a> framework were used, such as the following widgets and principles :<br>
    
     - Stateless and Stateful,
     - Text,
